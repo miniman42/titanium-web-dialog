@@ -92,6 +92,9 @@ public class TitaniumWebDialogModule extends KrollModule
 		}
 
 		CustomTabsIntent tabIntent = builder.build();
+		if (Utils.getInt(options, Params.FLAGS)>0) {
+			tabIntent.intent.setFlags(Utils.getInt(options, Params.FLAGS));
+		}
 
 		for (String s : customTabBrowsers) {
 			tabIntent.intent.setPackage(s);

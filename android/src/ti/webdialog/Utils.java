@@ -64,6 +64,11 @@ public class Utils
 		return (Boolean) (options.containsKeyAndNotNull(key) ? options.get(key) : false);
 	}
 
+	public static int getInt(KrollDict options, String key)
+	{
+		return (int) (options.containsKeyAndNotNull(key) ? options.get(key) : 0);
+	}
+
 	public static int getColor(KrollDict options, String key)
 	{
 		if (options.containsKeyAndNotNull(key)) {
