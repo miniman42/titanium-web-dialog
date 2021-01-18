@@ -6,7 +6,6 @@ since: "7.1.0"
 extends: Titanium.Module
 osver: { ios: { min: "9.0" }, android: { min: "4.1" } }
 description: |
-    
     The WebDialog module provides Titanium access to the native `SFSafariViewController` (iOS) and `ChromeTabs` (Android). 
     This enables you to deliver interactive web content in your app just like the built-in browser, including the native UI elements already 
     familiar to your users.
@@ -22,31 +21,36 @@ description: |
     Add the module as a dependency to your application by adding a **`<module>`** item to the
     **`<modules>`** element of your `tiapp.xml` file:
 
-        <ti:app>
-          ...
-          <modules>
-            <module platform="iphone">ti.webdialog</module>
-          </modules>
-          ...
-        </ti:app>
+    ``` xml
+    <ti:app>
+      <!-- ... -->
+      <modules>
+        <module platform="iphone">ti.webdialog</module>
+      </modules>
+      <!-- ... -->
+    </ti:app>
+    ```
 
     Use `require()` to access the module from JavaScript:
 
-        var dialog = require('ti.webdialog');
+    ``` javascript
+    var dialog = require('ti.webdialog');
+    ```
 
     The `dialog` variable is a reference to the module. Make API calls using this reference:
 
-        if (dialog.isSupported()) {
-            dialog.open({
-                url: 'https://appcelerator.com'
-            });
-        }
+    ``` javascript
+    if (dialog.isSupported()) {
+        dialog.open({
+            url: 'https://appcelerator.com'
+        });
+    }
+    ```
 
     ### Sample Application
 
     The module contains a sample application in the
     `<TITANIUM_SDK_HOME>/modules/iphone/ti.webdialog/<VERSION>/example/` folder.
-
 properties:
   - name: DISMISS_BUTTON_STYLE_DONE
     summary: Button style used to display a localized "Done" button.
@@ -84,6 +88,7 @@ methods:
   - name: open
     summary: Opens the web dialog with the options provided.
     description: |
+        ``` javascript
         var dialog = require('ti.webdialog');
         if (dialog.isSupported()) {
             dialog.open({
@@ -92,6 +97,7 @@ methods:
                 tintColor: 'red'
             });
         }
+        ```
     parameters:
       - name: params
         summary: Dictionary used to configure the web dialog.
@@ -100,10 +106,12 @@ methods:
   - name: close
     summary: Programmatically closes the web dialog.
     description: |
+        ``` javascript
         var dialog = require('ti.webdialog');
         if (dialog.isOpen()) {
             dialog.close();
         }
+        ```
 events:
   - name: open
     summary: |
@@ -149,7 +157,7 @@ events:
                
 ---
 name: WebDialogOpenParams
-summary: Parmaters used in the <Modules.WebDialog.open> method
+summary: Parameters used in the <Modules.WebDialog.open> method
 properties:
   - name: url
     summary: The URL to be opened.
@@ -197,3 +205,10 @@ properties:
     default: true
     type: Boolean
     platforms: [iphone, ipad, android]
+
+  - name: intentFlags
+    summary: Intent flags to be used for the Chrome Custom Tab, specified as a Bitwise-OR
+    optional: true
+    type: Number
+    constants: Titanium.Android.FLAG_*
+    platforms: [android]
