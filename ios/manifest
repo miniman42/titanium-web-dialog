@@ -15,4 +15,4 @@ name: titanium-web-dialog
 moduleid: ti.webdialog
 guid: 1f19cce1-0ad7-4e25-ab3b-0666f54a0a49
 platform: iphone
-minsdk: 9.2.0
+minsdk: 9.3.1
